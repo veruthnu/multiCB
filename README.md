@@ -10,5 +10,6 @@
 2/25 모델구조변경
 
 ## 모델아이콘 깡통이 
-![robot](https://user-images.githubusercontent.com/74548737/110195929-50b8c000-7e84-11eb-8cba-cc27462cbea5.png)
-![robot2](https://user-images.githubusercontent.com/74548737/110195930-52828380-7e84-11eb-96f0-d8ca9b10791c.png)
+![robot](https://user-images.githubusercontent.com/74548737/110195986-b2792a00-7e84-11eb-9606-98efe5800678.png)
+![robot2](https://user-images.githubusercontent.com/74548737/110195988-b3aa5700-7e84-11eb-98fd-e4e6e056e436.png)
+
