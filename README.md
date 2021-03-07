@@ -16,5 +16,9 @@ From 02/01 ~
 3/03 퀴즈 기능추가
 
 ## 챗봇대화
-![화면 캡처 2021-03-03 192748](https://user-images.githubusercontent.com/74548737/110240522-b47bdf80-7f8f-11eb-917c-90e0e6f53469.jpg)
-![화면 캡처 2021-03-03 192748](https://user-images.githubusercontent.com/74548737/110240528-bba2ed80-7f8f-11eb-81bc-cb40b6d2e73d.jpg)
+
+일상대화<br>
+![일상](https://user-images.githubusercontent.com/74548737/110240579-ff95f280-7f8f-11eb-850c-359ebc1c012e.png)
+연예상담<br>
+![연애](https://user-images.githubusercontent.com/74548737/110240594-0b81b480-7f90-11eb-9b96-e9c2b4acb170.png)
+
