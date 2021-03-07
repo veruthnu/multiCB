@@ -3,7 +3,7 @@ from random import *
 import time
 
 # 파일위치
-filepath = 'Chatbot_data/twit_data2.csv'
+filepath = 'Chatbot_data/quizfinal.csv'
 
 class Englishteacher:
 
@@ -61,7 +61,7 @@ def quizstart_v2():
                     (그만하고 싶으면 '그만' 이라고 입력하라능): ")
             if Answer == Et.EnglishAnswer():
                 print("와아 맞았다능 천재라능")
-                scout +=1
+                score +=1
                 break
             elif Answer == '그만':
                 break
