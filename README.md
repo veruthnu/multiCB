@@ -1,8 +1,9 @@
 # **MultiChatBot** : chatbot heroes
 <br>
-<br>
 From 02/01 ~
 다양한 모델을 통한 채팅봇 설계
+<br>
+<br>
 
 ## 모델아이콘 Kkangtong and Baqui
 ![robot](https://user-images.githubusercontent.com/74548737/110195986-b2792a00-7e84-11eb-9606-98efe5800678.png)
