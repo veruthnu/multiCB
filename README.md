@@ -17,9 +17,9 @@ From 02/01 ~
 
 ## 챗봇대화
 
-일상대화<br>
-![일상](https://user-images.githubusercontent.com/74548737/110240579-ff95f280-7f8f-11eb-850c-359ebc1c012e.png)<br>
+일상대화 와 연예상담<br><br>
+![일상 연애](https://user-images.githubusercontent.com/74548737/110240680-73d09600-7f90-11eb-9a7a-f40e09f63842.jpg)
 
-연예상담<br>
-![연애](https://user-images.githubusercontent.com/74548737/110240594-0b81b480-7f90-11eb-9b96-e9c2b4acb170.png)
+
+
 
