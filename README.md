@@ -19,6 +19,10 @@ From 02/01 ~
 
 일상대화 와 연예상담<br><br>
 ![일상 연애](https://user-images.githubusercontent.com/74548737/110240680-73d09600-7f90-11eb-9a7a-f40e09f63842.jpg)
+<br><br>
+
+최종목표는 서로 다른 언어모델(bart, bert, gpt2)로 
+데이터를 늘려 더 훈련시킬 예정
 
 
 
