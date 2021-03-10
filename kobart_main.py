@@ -297,11 +297,21 @@ def message_insert():
 
 #사용자 메세지 출력
 def message(msg):
-                
+    ## 여기부터
+
     ChatLog.insert(END,'\n ','tag-right')
-                
+          
     ChatLog.window_create(END, window=Label(ChatLog, fg="#000000", text=msg, 
     wraplength=200, font=("Arial", 13), bg="lightblue", bd=4, justify="left"))
+
+    human_image = tkinter.PhotoImage(file="human.png").subsample(7,7)
+
+    human_label = tkinter.Label(ChatLog, text='인간',image=human_image) 
+
+    human_label.image = human_image
+                
+    ChatLog.window_create(END, window=human_label)
+    ChatLog.insert(END, ' ')
                 
     ChatLog.config(foreground="#442265", font=("Verdana", 12 ))
                 
@@ -325,6 +335,7 @@ def Kkangtong(msg):
     ChatLog.window_create(END, window=Label(ChatLog, fg="#000000", text=msg, 
     wraplength=200, font=("Arial", 13), bg="#DDDDDD", bd=4, justify="left"))
 
+
     ChatLog.insert(END, '\n\n ')
 
     ChatLog.yview(END)
@@ -332,36 +343,64 @@ def Kkangtong(msg):
 #바퀴
 def Baqui(msg):
 
-    baqui_image = tkinter.PhotoImage(file="robot.png").subsample(7,7)
-    baqui_label = tkinter.Label(ChatLog, text='바퀴', image=baqui_image)
-    baqui_label.image = baqui_image
+    global res1
+    global res2
+    
+    if msg == res1:
 
-    ChatLog.window_create(END, window = baqui_label)
-    ChatLog.insert(END, ' ')
+        baqui_image = tkinter.PhotoImage(file="robot.png").subsample(7,7)
+        baqui_label = tkinter.Label(ChatLog, text='바퀴', image=baqui_image)
+        baqui_label.image = baqui_image
 
-    ChatLog.window_create(END, window=Label(ChatLog, fg="#000000", text=msg, 
-    wraplength=200, font=("Arial", 13), bg="pink", bd=4, justify="left"))
+        ChatLog.window_create(END, window = baqui_label)
+        ChatLog.insert(END, ' ')
 
-    ChatLog.insert(END, '\n\n ')
+        ChatLog.window_create(END, window=Label(ChatLog, fg="#000000", text=msg, 
+        wraplength=200, font=("Arial", 13), bg="pink", bd=4, justify="left"))
 
-    ChatLog.yview(END)
+        ChatLog.insert(END, '\n\n ')
+
+        ChatLog.yview(END)
+
+    elif msg == res2:
+
+        ChatLog.window_create(END, window=Label(ChatLog, fg="#000000", text=msg, 
+        wraplength=200, font=("Arial", 13), bg="pink", bd=4, justify="left"))
+
+        baqui_image = tkinter.PhotoImage(file="robot.png").subsample(7,7)
+        baqui_label = tkinter.Label(ChatLog, text='바퀴', image=baqui_image)
+        baqui_label.image = baqui_image
+
+        ChatLog.window_create(END, window = baqui_label)
+        ChatLog.insert(END, ' ')
+
+        ChatLog.insert(END, '\n\n ')
+
+        ChatLog.yview(END)
+                   
                    
 def send(event):
-    print('send 입력')
+
+    ChatLog.config(state=NORMAL)
+    ChatLog.insert(END, '\n ', 'tag-left')
+
     msg = message_insert()
     message(msg)
-    if  msg =='영어퀴즈':
-        ENGLISH_TEACHER()
-        print('send 실행')
 
-    elif msg != '':
-        res = baqui_model.chat(msg)
-        Baqui(res)
-        res1 = kkang_model.chat(msg)
-        Kkangtong(res1)
-        res2 = baqui_model.chat(res1)
+    if msg != '':
+
+        global res1
+        global res2
+
+        res1 = baqui_model.chat(msg)
+        Baqui(res1)
+
+        res = kkang_model.chat(msg)
+        Kkangtong(res)
+        #res1 = baqui_model.chat(msg)
+        ChatLog.insert(END, '\n ', 'tag-right')
+        res2 = baqui_model.chat(res)
         Baqui(res2)
-        print('send 실행')
         
 
 #자기소개
@@ -395,8 +434,8 @@ if __name__ == '__main__':
         hparams = yaml.load(f)
 
     #model = KoBARTConditionalGeneration(args)
-    kkang_model = KoBARTConditionalGeneration.load_from_checkpoint('logs/kobart_chitchat-model_chp/Kkangtong_a.ckpt', hparams=hparams)
-    baqui_model = KoBARTConditionalGeneration.load_from_checkpoint('logs/kobart_chitchat-model_chp/Baqui.ckpt', hparams=hparams)
+    kkang_model = KoBARTConditionalGeneration.load_from_checkpoint('logs/heroes_model/Kkangtong_a.ckpt', hparams=hparams)
+    baqui_model = KoBARTConditionalGeneration.load_from_checkpoint('logs/heroes_model/Baqui_final.ckpt', hparams=hparams)
     dm = ChatDataModule(args.train_file,
                         args.test_file,
                         os.path.join(args.tokenizer_path, 'model.json'),
@@ -409,7 +448,7 @@ if __name__ == '__main__':
                                                         save_last=True,
                                                         mode='min',
                                                         save_top_k=-1, #save_top_k=-1은 전체 저장
-                                                        prefix='kobart_chitchat')
+                                                        prefix='heroes_model')
     tb_logger = pl_loggers.TensorBoardLogger(os.path.join(args.default_root_dir, 'tb_logs'))
     lr_logger = pl.callbacks.LearningRateMonitor()
     trainer = pl.Trainer.from_argparse_args(args, logger=tb_logger,
